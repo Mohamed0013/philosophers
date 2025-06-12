@@ -6,7 +6,7 @@
 /*   By: mohdahma <mohdahma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 15:23:43 by mohdahma          #+#    #+#             */
-/*   Updated: 2025/06/09 17:11:53 by mohdahma         ###   ########.fr       */
+/*   Updated: 2025/06/12 20:15:01 by mohdahma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,29 +82,24 @@ int			check_input(int argc, char **argv);
 int			wrong_input_check(int argc, char **argv);
 void		print_instruction(void);
 
+//parse_utils.c
+int			ft_atoi(const char *str);
+int			ft_isspace(char c);
+int			ft_isdigit(char c);
+
 // init_data.c
 int			init_data(t_data *data, int argc, char **argv);
 int			init_philos(t_data *data);
 int			init_forks(t_data *data);
 
-// time.c
-size_t		get_time(void);
-void		ft_usleep(size_t time);
-
-// monitoring.c
-void		*all_full_routine(void *data_p);
-void		*monitoring(void *data_p);
-
 // eat_1.c
 int			eat(t_philo *philo);
-void		update_last_meal_time(t_philo *philo);
 
 // eat_2.c
 int			take_forks(t_philo *philo);
 int			take_right_fork(t_philo *philo);
 int			take_left_fork(t_philo *philo);
 int			take_forks(t_philo *philo);
-void		update_nb_meals_had(t_philo *philo);
 void		drop_forks(t_philo *philo);
 void		sleep_for_eating(t_philo *philo);
 
@@ -113,6 +108,10 @@ int			ft_sleep(t_philo *philo);
 
 // think.c
 int			think(t_philo *philo);
+
+// monitoring.c
+void		*all_full_routine(void *data_p);
+void		*monitoring(void *data_p);
 
 // getters.c
 size_t		get_time_to_die(t_data *data);
@@ -134,9 +133,8 @@ void		free_data(t_data *data);
 void		print_msg(t_data *data, int id, char *msg);
 int			handle_1_philo(t_philo *philo);
 
-//parse_utils.c
-int			ft_atoi(const char *str);
-int			ft_isspace(char c);
-int			ft_isdigit(char c);
+// time.c
+size_t		get_time(void);
+void		ft_usleep(t_data *data);
 
 #endif

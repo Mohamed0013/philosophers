@@ -6,7 +6,7 @@
 /*   By: mohdahma <mohdahma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 12:59:17 by mohdahma          #+#    #+#             */
-/*   Updated: 2025/06/09 17:24:34 by mohdahma         ###   ########.fr       */
+/*   Updated: 2025/06/12 20:14:47 by mohdahma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	handle_1_philo(t_philo *philo)
 {
 	take_left_fork(philo);
-	ft_usleep(get_time_to_die(philo->data));
+	ft_usleep(philo->data);
 	pthread_mutex_lock(&philo->data->flag_mut);
 	philo->data->flag = 1;
 	pthread_mutex_unlock(&philo->data->flag_mut);

@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   time.c                                             :+:      :+:    :+:   */
+/*   sleep.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mohdahma <mohdahma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/30 12:53:30 by mohdahma          #+#    #+#             */
-/*   Updated: 2025/06/02 19:32:22 by mohdahma         ###   ########.fr       */
+/*   Created: 2025/04/30 12:58:58 by mohdahma          #+#    #+#             */
+/*   Updated: 2025/06/12 20:14:38 by mohdahma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-void	ft_usleep(size_t sleep_time)
+int	ft_sleep(t_philo *philo)
 {
-	size_t	start;
-
-	start = get_time();
-	while ((get_time() - start) < sleep_time)
-		usleep(500);
-}
-
-size_t	get_time(void)
-{
-	struct timeval	tv;
-
-	if (gettimeofday(&tv, NULL))
-		return (0);
-	return ((tv.tv_sec * (size_t)1000) + (tv.tv_usec / 1000));
+	pthread_mutex_lock(&philo->mut_state);
+	if (get_flag(philo->data) == 0)
+		philo->state = SLEEPING;
+	pthread_mutex_unlock(&philo->mut_state);
+	if (get_flag(philo->data))
+		return (1);
+	print_msg(philo->data, philo->id, "is sleeping");
+	ft_usleep(philo->data);
+	return (0);
 }
