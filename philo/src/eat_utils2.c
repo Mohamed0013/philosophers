@@ -6,7 +6,7 @@
 /*   By: mohdahma <mohdahma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 12:58:07 by mohdahma          #+#    #+#             */
-/*   Updated: 2025/06/12 20:13:39 by mohdahma         ###   ########.fr       */
+/*   Updated: 2025/06/13 18:50:42 by mohdahma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,4 @@ void	drop_forks(t_philo *philo)
 {
 	pthread_mutex_unlock(philo->left_f);
 	pthread_mutex_unlock(philo->right_f);
-}
-
-void	sleep_for_eating(t_philo *philo)
-{
-	ft_usleep(philo->data);
 }

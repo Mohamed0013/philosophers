@@ -6,7 +6,7 @@
 /*   By: mohdahma <mohdahma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 15:23:43 by mohdahma          #+#    #+#             */
-/*   Updated: 2025/06/12 20:15:01 by mohdahma         ###   ########.fr       */
+/*   Updated: 2025/06/21 18:33:44 by mohdahma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,11 @@
 
 typedef enum e_philo_state
 {
-	EATING = 0,
-	SLEEPING = 1,
-	THINKING = 2,
-	// DEAD = 3,
-	FULL = 4,
-	INACT = 5
+	INACT = 0,
+	EATING = 1,
+	SLEEPING = 2,
+	THINKING = 3,
+	FULL = 4
 }				t_state;
 
 typedef struct s_philo
@@ -135,6 +134,6 @@ int			handle_1_philo(t_philo *philo);
 
 // time.c
 size_t		get_time(void);
-void		ft_usleep(t_data *data);
+void		ft_usleep(size_t time_to_sleep);
 
 #endif

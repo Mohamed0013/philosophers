@@ -6,7 +6,7 @@
 /*   By: mohdahma <mohdahma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 12:56:53 by mohdahma          #+#    #+#             */
-/*   Updated: 2025/06/09 13:48:53 by mohdahma         ###   ########.fr       */
+/*   Updated: 2025/06/26 18:43:18 by mohdahma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,18 @@ void	drop_right_fork(t_philo *philo)
 int	take_left_fork(t_philo *philo)
 {
 	pthread_mutex_lock(philo->left_f);
+	pthread_mutex_lock(&philo->data->mut_write);
 	print_msg(philo->data, philo->id, "has taken a fork");
+	pthread_mutex_unlock(&philo->data->mut_write);
 	return (0);
 }
 
 int	take_right_fork(t_philo *philo)
 {
 	pthread_mutex_lock(philo->right_f);
+	pthread_mutex_lock(&philo->data->mut_write);
 	print_msg(philo->data, philo->id, "has taken a fork");
+	pthread_mutex_unlock(&philo->data->mut_write);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mohdahma <mohdahma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 12:58:37 by mohdahma          #+#    #+#             */
-/*   Updated: 2025/04/30 12:58:38 by mohdahma         ###   ########.fr       */
+/*   Updated: 2025/06/21 18:51:47 by mohdahma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,6 @@ int	wrong_input_check(int ac, char **av)
 
 	i = 1;
 	if (ac == 6 && ft_atoi(av[5]) <= 0)
-		return (1);
-	if (ft_atoi(av[1]) < 1 || ft_atoi(av[1]) > 200)
-		return (1);
-	if (ft_atoi(av[2]) < 60 || ft_atoi(av[3]) < 60
-		|| ft_atoi(av[4]) < 60)
 		return (1);
 	return (0);
 }

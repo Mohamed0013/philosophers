@@ -6,7 +6,7 @@
 /*   By: mohdahma <mohdahma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 15:38:07 by mohdahma          #+#    #+#             */
-/*   Updated: 2025/06/11 18:09:44 by mohdahma         ###   ########.fr       */
+/*   Updated: 2025/06/26 19:05:48 by mohdahma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	*all_full_routine(void *data_p)
 	i = -1;
 	while (++i < data->nb_philos && get_keep_iter(data))
 	{
-		usleep(1000);
+		ft_usleep(500);
 		if (is_philo_full(data, &data->philos[i]) == false)
 			i = -1;
 	}
@@ -72,17 +72,17 @@ void	*monitoring(void *data_p)
 	i = -1;
 	while (++i < data->nb_philos && get_keep_iter(data))
 	{
-		if (philo_died(&philos[i]) && get_keep_iter(data))
+		if (philo_died(&philos[i]))
 		{
+			pthread_mutex_lock(&data->mut_write);
 			print_msg(data, philos[i].id, "died");
 			set_keep(data, false);
-			pthread_mutex_lock(&data->flag_mut);
-			data->flag = 1;
-			pthread_mutex_unlock(&data->flag_mut);
+			pthread_mutex_unlock(&data->mut_write);
 			break ;
 		}
 		if (i == data->nb_philos - 1)
 			i = -1;
+		ft_usleep(500);
 	}
 	return (NULL);
 }

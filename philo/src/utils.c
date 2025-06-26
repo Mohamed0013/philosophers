@@ -6,7 +6,7 @@
 /*   By: mohdahma <mohdahma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 12:59:17 by mohdahma          #+#    #+#             */
-/*   Updated: 2025/06/12 20:14:47 by mohdahma         ###   ########.fr       */
+/*   Updated: 2025/06/20 15:04:36 by mohdahma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	handle_1_philo(t_philo *philo)
 {
 	take_left_fork(philo);
-	ft_usleep(philo->data);
+	ft_usleep(philo->data->eat_time);
 	pthread_mutex_lock(&philo->data->flag_mut);
 	philo->data->flag = 1;
 	pthread_mutex_unlock(&philo->data->flag_mut);
@@ -53,8 +53,6 @@ void	print_msg(t_data *data, int id, char *msg)
 	size_t	time;
 
 	time = get_time() - get_start_time(data);
-	pthread_mutex_lock(&data->mut_write);
 	if (get_keep_iter(data))
 		printf("%lu %d %s\n", time, id, msg);
-	pthread_mutex_unlock(&data->mut_write);
 }
